@@ -1,0 +1,226 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap");
+
+// Variables
+$primary: hsl(196, 100%, 53%);
+$secondary: hsl(358, 100%, 62%);
+$dark: #2e3440;
+$dark-lighter: #3b4252;
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(222deg, hsl(0, 0%, 98%) 50%, hsl(0, 0%, 96%) 80%);
+  background-attachment: fixed;
+  color: $dark;
+}
+
+header {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  color: hsl(220, 16%, 22%);
+
+  .title-container {
+    display: flex;
+    align-items: center;
+    column-gap: 0.7rem;
+  }
+
+  .accent {
+    color: darken($primary, 15%);
+  }
+
+  h2 {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: normal;
+  }
+
+  .fa-moon,
+  .fa-sun {
+    cursor: pointer;
+  }
+
+  .fa-moon:hover,
+  .fa-sun:hover {
+    opacity: 0.8;
+  }
+}
+
+main {
+  max-width: 600px;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 1rem;
+  user-select: none;
+}
+
+.calc-container {
+  display: grid;
+  grid-template-columns: repeat(4, 75px);
+  place-content: center;
+  gap: 0.5rem;
+
+  #display {
+    background-color: inherit;
+    font-size: 1.5rem;
+    grid-column: span 4;
+    padding: 2rem;
+    text-align: end;
+    margin-bottom: 1rem;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    background-color: inherit;
+    border-radius: 10px;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    color: $dark;
+  }
+
+  button:hover {
+    background: hsl(0, 0%, 90%);
+  }
+
+  button:active {
+    background: hsl(0, 0%, 80%);
+  }
+
+  #equal {
+    grid-column: span 4;
+    color: $primary;
+    transition: 0.2s;
+  }
+
+  #equal:hover {
+    background-color: $primary;
+    color: hsl(0, 0%, 98%);
+    box-shadow: $primary 0px 0px 5px;
+    border: none;
+  }
+
+  #C {
+    grid-column: span 4;
+    color: $secondary;
+    transition: 0.2s;
+    border: none;
+  }
+
+  #C:hover {
+    background-color: $secondary;
+    color: hsl(0, 0%, 98%);
+    box-shadow: $secondary 0px 0px 5px;
+  }
+
+  #equal:active,
+  #C:active {
+    opacity: 0.8;
+  }
+
+  .op-basic,
+  .fa-minimize,
+  .fa-expand {
+    color: darken($primary, 10%);
+  }
+
+  .sci {
+    display: none;
+  }
+}
+
+.calc-container.active {
+  grid-template-columns: repeat(5, 60px);
+
+  .sci {
+    display: inline;
+  }
+  #display {
+    grid-column: span 5;
+  }
+  #equal,
+  #C {
+    grid-column: span 2;
+  }
+  #sci-toggle {
+    background-color: hsl(0, 0%, 90%);
+  }
+  #sci-toggle:hover {
+    background-color: hsl(0, 0%, 80%);
+  }
+  #sci-toggle:active {
+    background-color: hsl(0, 0%, 70%);
+  }
+}
+
+.latex-img {
+  width: 25px;
+}
+
+body.dark {
+  background: hsl(0, 0%, 6%);
+  background: $dark;
+  color: hsl(0, 0%, 98%);
+
+  header {
+    color: hsl(0, 0%, 98%);
+
+    .accent {
+      color: lighten($primary, 15%);
+    }
+  }
+
+  button {
+    color: hsl(0, 0%, 98%);
+    border: none;
+  }
+
+  button:hover {
+    background-color: lighten($dark, 10%);
+  }
+  .op-basic,
+  .fa-minimize,
+  .fa-expand,
+  #equal {
+    color: lighten($primary, 10%);
+  }
+
+  #C {
+    color: lighten($secondary, 10%);
+    border: 2px solid lighten($secondary, 10%);
+  }
+
+  #C:hover {
+    background-color: lighten($secondary, 10%);
+    color: hsl(0, 0, 98%);
+    border: 2px solid inherit;
+  }
+
+  #equal {
+    border: 2px solid;
+  }
+
+  #equal:hover {
+    background-color: lighten($primary, 10%);
+  }
+
+  .calc-container.active #sci-toggle {
+    background-color: lighten($dark, 20%);
+  }
+}

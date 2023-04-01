@@ -1,0 +1,198 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(222deg, hsl(0, 0%, 98%) 50%, hsl(0, 0%, 96%) 80%);
+  background-attachment: fixed;
+  color: #2e3440;
+}
+
+header {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  color: hsl(220, 16%, 22%);
+}
+header .title-container {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 0.7rem;
+       column-gap: 0.7rem;
+}
+header .accent {
+  color: #008ec2;
+}
+header h2 {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: normal;
+}
+header .fa-moon,
+header .fa-sun {
+  cursor: pointer;
+}
+header .fa-moon:hover,
+header .fa-sun:hover {
+  opacity: 0.8;
+}
+
+main {
+  max-width: 600px;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 1rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.calc-container {
+  display: grid;
+  grid-template-columns: repeat(4, 75px);
+  place-content: center;
+  gap: 0.5rem;
+}
+.calc-container #display {
+  background-color: inherit;
+  font-size: 1.5rem;
+  grid-column: span 4;
+  padding: 2rem;
+  text-align: end;
+  margin-bottom: 1rem;
+}
+.calc-container button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  background-color: inherit;
+  border-radius: 10px;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  color: #2e3440;
+}
+.calc-container button:hover {
+  background: hsl(0, 0%, 90%);
+}
+.calc-container button:active {
+  background: hsl(0, 0%, 80%);
+}
+.calc-container #equal {
+  grid-column: span 4;
+  color: hsl(196, 100%, 53%);
+  transition: 0.2s;
+}
+.calc-container #equal:hover {
+  background-color: hsl(196, 100%, 53%);
+  color: hsl(0, 0%, 98%);
+  box-shadow: hsl(196, 100%, 53%) 0px 0px 5px;
+  border: none;
+}
+.calc-container #C {
+  grid-column: span 4;
+  color: hsl(358, 100%, 62%);
+  transition: 0.2s;
+  border: none;
+}
+.calc-container #C:hover {
+  background-color: hsl(358, 100%, 62%);
+  color: hsl(0, 0%, 98%);
+  box-shadow: hsl(358, 100%, 62%) 0px 0px 5px;
+}
+.calc-container #equal:active,
+.calc-container #C:active {
+  opacity: 0.8;
+}
+.calc-container .op-basic,
+.calc-container .fa-minimize,
+.calc-container .fa-expand {
+  color: #00a1db;
+}
+.calc-container .sci {
+  display: none;
+}
+
+.calc-container.active {
+  grid-template-columns: repeat(5, 60px);
+}
+.calc-container.active .sci {
+  display: inline;
+}
+.calc-container.active #display {
+  grid-column: span 5;
+}
+.calc-container.active #equal,
+.calc-container.active #C {
+  grid-column: span 2;
+}
+.calc-container.active #sci-toggle {
+  background-color: hsl(0, 0%, 90%);
+}
+.calc-container.active #sci-toggle:hover {
+  background-color: hsl(0, 0%, 80%);
+}
+.calc-container.active #sci-toggle:active {
+  background-color: hsl(0, 0%, 70%);
+}
+
+.latex-img {
+  width: 25px;
+}
+
+body.dark {
+  background: hsl(0, 0%, 6%);
+  background: #2e3440;
+  color: hsl(0, 0%, 98%);
+}
+body.dark header {
+  color: hsl(0, 0%, 98%);
+}
+body.dark header .accent {
+  color: #5cd3ff;
+}
+body.dark button {
+  color: hsl(0, 0%, 98%);
+  border: none;
+}
+body.dark button:hover {
+  background-color: #434c5e;
+}
+body.dark .op-basic,
+body.dark .fa-minimize,
+body.dark .fa-expand,
+body.dark #equal {
+  color: #42cdff;
+}
+body.dark #C {
+  color: #ff7075;
+  border: 2px solid #ff7075;
+}
+body.dark #C:hover {
+  background-color: #ff7075;
+  color: hsl(0, 0%, 98%);
+  border: 2px solid inherit;
+}
+body.dark #equal {
+  border: 2px solid;
+}
+body.dark #equal:hover {
+  background-color: #42cdff;
+}
+body.dark .calc-container.active #sci-toggle {
+  background-color: #59647b;
+}/*# sourceMappingURL=main.css.map */
