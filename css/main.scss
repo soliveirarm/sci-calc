@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap");
 
 // Variables
-$primary: hsl(196, 100%, 53%);
+$primary: #88c0d0;
 $secondary: hsl(358, 100%, 62%);
 $dark: #2e3440;
 $dark-lighter: #3b4252;
@@ -67,6 +67,7 @@ main {
   user-select: none;
 }
 
+//  Light mode and basic calculator
 .calc-container {
   display: grid;
   grid-template-columns: repeat(4, 75px);
@@ -83,14 +84,11 @@ main {
   }
 
   button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
+    font-size: 1rem;
     background-color: inherit;
     border-radius: 10px;
     border: none;
-    padding: 1rem;
+    padding: 0.8em 1rem;
     cursor: pointer;
     color: $dark;
   }
@@ -101,6 +99,15 @@ main {
 
   button:active {
     background: hsl(0, 0%, 80%);
+  }
+
+  #radAndDeg {
+    color: darken(#a3be8c, 10%);
+    font-weight: 600;
+  }
+
+  .trig {
+    background-color: lighten(#a3be8c, 30%);
   }
 
   #equal {
@@ -145,17 +152,21 @@ main {
   }
 }
 
+// Light mode and scientific calculator
 .calc-container.active {
-  grid-template-columns: repeat(5, 60px);
+  grid-template-columns: repeat(6, 60px);
 
   .sci {
     display: inline;
   }
   #display {
-    grid-column: span 5;
+    grid-column: span 6;
   }
-  #equal,
   #C {
+    grid-column: span 1;
+  }
+
+  #equal {
     grid-column: span 2;
   }
   #sci-toggle {
@@ -173,8 +184,8 @@ main {
   width: 25px;
 }
 
+// Dark theme
 body.dark {
-  background: hsl(0, 0%, 6%);
   background: $dark;
   color: hsl(0, 0%, 98%);
 
@@ -193,6 +204,12 @@ body.dark {
 
   button:hover {
     background-color: lighten($dark, 10%);
+  }
+
+  .trig {
+    background-color: inherit;
+    color: #a3be8c;
+    font-weight: 600;
   }
   .op-basic,
   .fa-minimize,

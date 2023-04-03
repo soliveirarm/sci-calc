@@ -38,20 +38,16 @@ darkModeToggle.addEventListener("click", () => {
   swapIcons("square", "x-squared");
   swapIcons("one-divided-by-x", "one-div-x");
   swapIcons("square-root", "sqrt");
+  swapIcons("cube-root", "cube-root");
   swapIcons("x-power-y", "x-power-y");
   swapIcons("ten-x", "ten-power-x");
-  swapIcons("two-power-x", "two-power-x");
-  swapIcons("cube", "x-cube");
-  swapIcons("cube-root", "x-cube");
 });
 
 window.onload = () => {
   swapIcons("square", "x-squared");
   swapIcons("one-divided-by-x", "one-div-x");
   swapIcons("square-root", "sqrt");
+  swapIcons("cube-root", "cube-root");
   swapIcons("x-power-y", "x-power-y");
   swapIcons("ten-x", "ten-power-x");
-  swapIcons("two-power-x", "two-power-x");
-  swapIcons("cube", "x-cube");
-  swapIcons("cube-root", "x-cube");
 };

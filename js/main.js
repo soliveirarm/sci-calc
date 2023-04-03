@@ -18,6 +18,7 @@ document.addEventListener("keydown", (e) => {
 });
 
 // Toggle FUNCTION that shows and hides the scientific calc
+// It also changes the icon
 sciToggle.onclick = () => {
   calcContainer.classList.toggle("active");
   if (calcContainer.classList.contains("active")) {
@@ -50,6 +51,16 @@ function basicOp(op) {
     display.innerText += op;
   }
 }
+
+function symbols(symbol) {
+  // Checks if the number on screen == 0 and if the symbol parameter != "."
+  if (display.innerText == 0 && symbol != ".") {
+    display.innerText = symbol;
+  } else {
+    display.innerText += symbol;
+  }
+}
+
 // BASIC OPERATION BUTTONS
 const plusBtn = document.querySelector("#plus");
 const minusBtn = document.querySelector("#minus");
@@ -149,31 +160,17 @@ tenX.onclick = () => {
   display.innerText = Math.pow(10, display.innerText);
 };
 
-// Two power X
-let twoPowerX = document.querySelector("#two-power-x");
-twoPowerX.onclick = () => {
-  //    The display will show 2 to the power of whatever is in the display.innerText;
-  display.innerText = Math.pow(2, display.innerText);
-};
-
-// Cube
-let cube = document.querySelector("#cube");
-cube.onclick = () => {
+// cube root
+let cubeRoot = document.querySelector("#cube-root");
+cubeRoot.onclick = () => {
   //    The display will show the display.innerText cubed;
-  display.innerText = Math.pow(display.innerText, 3);
+  display.innerText = Math.cbrt(display.innerText);
 };
 
 // POINT
 const point = document.querySelector("#point");
 point.onclick = () => {
   display.innerText += ".";
-};
-
-// Cube root
-let cubeRoot = document.querySelector("#cube-root");
-cubeRoot.onclick = () => {
-  //    The display will show the cubic root of display.innerText;
-  display.innerText = Math.cbrt(display.innerText);
 };
 
 // Log y base x
@@ -269,6 +266,15 @@ document.addEventListener("keydown", (e) => {
       break;
     case "Backspace":
       backspace();
+      break;
+    case "(":
+      symbols("(");
+      break;
+    case ")":
+      symbols(")");
+      break;
+    case ".":
+      symbols(".");
       break;
   }
 
