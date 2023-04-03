@@ -17,15 +17,29 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-// Toggle FUNCTION that shows and hides the scientific calc
-// It also changes the icon
-sciToggle.onclick = () => {
+// Gets the sicCalc value on localStorage
+let sciCalcIsActive = localStorage.getItem("sciCalc");
+
+// Toggle FUNCTION that shows and hides the scientific calc and changes the icon
+function toggleSciCalc() {
   calcContainer.classList.toggle("active");
   if (calcContainer.classList.contains("active")) {
     sciToggle.innerHTML = `<i class="fa-solid fa-minimize"></i>`;
+    localStorage.setItem("sciCalc", "enabled");
   } else {
     sciToggle.innerHTML = `<i class="fa-solid fa-expand"></i>`;
+    localStorage.removeItem("sciCalc");
   }
+}
+
+// Checks if the scientific calculator was activated or not and saves the user preference
+if (sciCalcIsActive === "enabled") {
+  toggleSciCalc();
+}
+
+// Toggles the scientific calculator onclick
+sciToggle.onclick = () => {
+  toggleSciCalc();
 };
 
 // forEach THAT RUNS THROUGH ALL THE BUTTONS INSIDE THE .calc-container
