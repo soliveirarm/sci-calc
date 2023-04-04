@@ -21,7 +21,7 @@ body {
 }
 
 header {
-  padding: 1rem;
+  padding: 0.7rem 1.2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -57,7 +57,7 @@ header {
 main {
   max-width: 600px;
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.5rem;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -104,6 +104,11 @@ main {
   #radAndDeg {
     color: darken(#a3be8c, 10%);
     font-weight: 600;
+  }
+
+  #absolute,
+  #one-divided-by-x {
+    letter-spacing: 0.1em;
   }
 
   .trig {
