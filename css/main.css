@@ -89,10 +89,6 @@ main {
 .calc-container button:active {
   background: hsl(0, 0%, 80%);
 }
-.calc-container #radAndDeg {
-  color: #89ac6b;
-  font-weight: 600;
-}
 .calc-container #absolute,
 .calc-container #one-divided-by-x {
   letter-spacing: 0.1em;
@@ -136,13 +132,13 @@ main {
 }
 
 .calc-container.active {
-  grid-template-columns: repeat(6, 60px);
+  grid-template-columns: repeat(5, 60px);
 }
 .calc-container.active .sci {
   display: inline;
 }
 .calc-container.active #display {
-  grid-column: span 6;
+  grid-column: span 5;
 }
 .calc-container.active #C {
   grid-column: span 1;

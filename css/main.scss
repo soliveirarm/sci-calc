@@ -101,11 +101,6 @@ main {
     background: hsl(0, 0%, 80%);
   }
 
-  #radAndDeg {
-    color: darken(#a3be8c, 10%);
-    font-weight: 600;
-  }
-
   #absolute,
   #one-divided-by-x {
     letter-spacing: 0.1em;
@@ -159,13 +154,13 @@ main {
 
 // Light mode and scientific calculator
 .calc-container.active {
-  grid-template-columns: repeat(6, 60px);
+  grid-template-columns: repeat(5, 60px);
 
   .sci {
     display: inline;
   }
   #display {
-    grid-column: span 6;
+    grid-column: span 5;
   }
   #C {
     grid-column: span 1;

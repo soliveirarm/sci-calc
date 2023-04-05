@@ -113,6 +113,12 @@ absolute.onclick = () => {
   display.innerText = `|${display.innerText}| = ${Math.abs(display.innerText)}`;
 };
 
+// Exp
+let exp = document.querySelector("#exp");
+exp.onclick = () => {
+  display.innerText = Math.exp(display.innerText);
+};
+
 // C
 function c() {
   display.innerText = 0;
@@ -171,7 +177,7 @@ power.onclick = () => {
 //Ten to the power of x
 let tenX = document.querySelector("#ten-x");
 tenX.onclick = () => {
-  display.innerText = Math.pow(10, display.innerText);
+  display.innerText += " * 10^";
 };
 
 // cube root
@@ -187,13 +193,13 @@ point.onclick = () => {
   display.innerText += ".";
 };
 
-// Log y base x
+// Log 10
 let log = document.querySelector("#log");
 log.onclick = () => {
   if (display.innerText == 0) {
-    alert("Inválido!");
+    alert("O logarítimo de 0 não está definido!");
   } else {
-    display.innerText = `log ${display.innerText} base` + " ";
+    display.innerText = Math.log10(display.innerText);
   }
 };
 
@@ -231,13 +237,7 @@ function showResult() {
     if (display.innerText.includes("^")) {
       powerCalc();
     } else {
-      if (display.innerText.includes("base")) {
-        let base = display.innerText.split("base")[1];
-        let log = display.innerText.split("log ").pop().split(" base")[0];
-        display.innerText = Math.log(log) / Math.log(base);
-      } else {
-        display.innerText = eval(display.innerText);
-      }
+      display.innerText = eval(display.innerText);
     }
   }
 }
