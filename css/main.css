@@ -11,6 +11,7 @@ body {
   background: linear-gradient(222deg, hsl(0, 0%, 98%) 50%, hsl(0, 0%, 96%) 80%);
   background-attachment: fixed;
   color: #2e3440;
+  -webkit-tap-highlight-color: transparent;
 }
 
 header {
