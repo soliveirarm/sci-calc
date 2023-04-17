@@ -318,11 +318,11 @@ function toggleDarkMode() {
   document.body.classList.toggle("dark");
 
   if (document.body.classList.contains("dark")) {
-    darkModeToggle.innerHTML = '<i class="fa-solid fa-sun fa-xl"></i>';
+    darkModeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
     localStorage.setItem("darkModeStatus", "enabled");
   } else {
     document.body.classList.remove("dark");
-    darkModeToggle.innerHTML = '<i class="fa-solid fa-moon fa-xl"></i>';
+    darkModeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
     localStorage.removeItem("darkModeStatus");
   }
 }
@@ -332,16 +332,105 @@ if (darkModeSave === "enabled") {
   toggleDarkMode();
 }
 // EventListener on the button that toggles dark mode when the user clicks on it
-darkModeToggle.addEventListener("click", () => {
+darkModeToggle.onclick = () => {
   darkModeSave = localStorage.getItem("darkModeStatus");
   toggleDarkMode();
   swapIcons("cube-root", "cube-root");
   swapIcons("x-power-y", "x-power-y");
   swapIcons("ten-x", "ten-power-x");
-});
+};
 
 window.onload = () => {
   swapIcons("cube-root", "cube-root");
   swapIcons("x-power-y", "x-power-y");
   swapIcons("ten-x", "ten-power-x");
 };
+
+let secondRow = document.querySelector("#secondRow");
+let sin = document.querySelector("#sin");
+let cos = document.querySelector("#cos");
+let tan = document.querySelector("#tan");
+let arcsin = document.querySelector("#arcsin");
+let arccos = document.querySelector("#arccos");
+let arctan = document.querySelector("#arctan");
+
+function toggleTrigonometryButtons(btn) {
+  btn.classList.toggle("hidden");
+}
+
+// Activates the second row and changes the buttons
+secondRow.onclick = () => {
+  secondRow.classList.toggle("active");
+  secondRow.classList.toggle("second-row-pressed")
+
+  if (secondRow.classList.contains("active")) {
+    toggleTrigonometryButtons(sin);
+    toggleTrigonometryButtons(cos);
+    toggleTrigonometryButtons(tan);
+
+    toggleTrigonometryButtons(arcsin);
+    toggleTrigonometryButtons(arccos);
+    toggleTrigonometryButtons(arctan);
+  } else {
+    toggleTrigonometryButtons(sin);
+    toggleTrigonometryButtons(cos);
+    toggleTrigonometryButtons(tan);
+
+    toggleTrigonometryButtons(arcsin);
+    toggleTrigonometryButtons(arccos);
+    toggleTrigonometryButtons(arctan);
+  }
+}
+
+// Trigonometry
+
+// Sin
+sin.onclick = () => {
+  if (display.innerText == 0) {
+    display.innerText = Math.sin(display.innerText).toFixed();
+  } else {
+    display.innerText = Math.sin(display.innerText).toFixed(11);
+  }
+}
+
+// Cos
+cos.onclick = () => {
+  if(display.innerText == 0) {
+    display.innerText = Math.cos(display.innerText).toFixed();
+  } else {
+    display.innerText = Math.cos(display.innerText).toFixed(11);
+  }
+}
+
+// Tan
+tan.onclick = () => {
+  if(display.innerText == 0) {
+    display.innerText = Math.tan(display.innerText).toFixed();
+  } else {
+    display.innerText = Math.tan(display.innerText).toFixed(11);
+  }
+}
+
+// Arcsin
+arcsin.onclick = () => {
+  if(display.innerText == 0) {
+    display.innerText = Math.asin(display.innerText).toFixed();
+  } else {
+    display.innerText = Math.asin(display.innerText).toFixed(11);
+  }
+}
+
+// Arccos
+arccos.onclick = () => {
+  display.innerText = Math.acos(display.innerText).toFixed(11);
+}
+
+// Arctan
+arctan.onclick = () => {
+  if(display.innerText == 0) {
+    display.innerText = Math.atan(display.innerText).toFixed();
+  } else {
+    display.innerText = Math.atan(display.innerText).toFixed(11);
+  }
+}
+

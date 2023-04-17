@@ -49,7 +49,7 @@ main {
   max-width: 600px;
   border-radius: 10px;
   padding: 0.5rem;
-  margin: 0 auto;
+  margin: 0 auto 15px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -70,7 +70,7 @@ main {
   background-color: inherit;
   font-size: 1.5rem;
   grid-column: span 4;
-  padding: 2rem;
+  padding: 1.5rem;
   text-align: end;
   margin-bottom: 1rem;
 }
@@ -154,6 +154,16 @@ main {
 }
 .calc-container.active #sci-toggle:active {
   background-color: hsl(0, 0%, 70%);
+}
+.calc-container.active .hidden {
+  display: none;
+}
+.calc-container.active .second-row-pressed {
+  background-color: #a3be8c;
+  font-weight: bold;
+}
+.calc-container.active #secondRow {
+  grid-column: span 2;
 }
 
 .latex-img {
