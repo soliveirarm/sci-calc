@@ -95,7 +95,7 @@ main {
   letter-spacing: 0.1em;
 }
 .calc-container .trig {
-  background-color: #f1f5ee;
+  background-color: #ebf4f7;
 }
 .calc-container #equal {
   grid-column: span 4;
@@ -160,7 +160,8 @@ main {
   display: none;
 }
 .calc-container.active .second-row-pressed {
-  background-color: #a3be8c;
+  background-color: #88c0d0;
+  color: #fafafa;
   font-weight: bold;
 }
 .calc-container.active #secondRow {
@@ -190,7 +191,7 @@ body.dark button:hover {
 }
 body.dark .trig {
   background-color: inherit;
-  color: #a3be8c;
+  color: #88c0d0;
   font-weight: 600;
 }
 body.dark .op-basic,

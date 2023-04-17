@@ -6,7 +6,6 @@ $primary: #88c0d0;
 $secondary: hsl(358, 100%, 62%);
 $dark: #2e3440;
 $dark-lighter: #3b4252;
-$green: #a3be8c;
 
 * {
   margin: 0;
@@ -109,7 +108,7 @@ main {
   }
 
   .trig {
-    background-color: lighten($green, 30%);
+    background-color: lighten($primary, 27%);
   }
 
   #equal {
@@ -184,7 +183,8 @@ main {
     display: none;
   }
   .second-row-pressed {
-    background-color: $green;
+    background-color: $primary;
+    color: #fafafa;
     font-weight: bold;
   }
 
@@ -221,7 +221,7 @@ body.dark {
 
   .trig {
     background-color: inherit;
-    color: $green;
+    color: $primary;
     font-weight: 600;
   }
   .op-basic,
