@@ -19,6 +19,7 @@ body {
   background: linear-gradient(222deg, hsl(0, 0%, 98%) 50%, hsl(0, 0%, 96%) 80%);
   background-attachment: fixed;
   color: $dark;
+  -webkit-tap-highlight-color: transparent;
 }
 
 header {
@@ -180,16 +181,16 @@ main {
     background-color: hsl(0, 0%, 70%);
   }
   .hidden {
-  display: none;
-}
-.second-row-pressed {
-  background-color: $green;
-  font-weight: bold;
-}
+    display: none;
+  }
+  .second-row-pressed {
+    background-color: $green;
+    font-weight: bold;
+  }
 
-#secondRow {
-  grid-column: span 2;
-}
+  #secondRow {
+    grid-column: span 2;
+  }
 }
 
 .latex-img {
