@@ -98,7 +98,7 @@ divideBtn.addEventListener("click", () => {
 // Square
 let square = document.querySelector("#square");
 square.onclick = () => {
-  display.innerText = display.innerText * display.innerText;
+  display.innerText = Math.pow(display.innerText, 2);
 };
 
 // One divided by x
@@ -181,16 +181,26 @@ tenX.onclick = () => {
 };
 
 // cube root
-let cubeRoot = document.querySelector("#cube-root");
-cubeRoot.onclick = () => {
+let plusMinus = document.querySelector("#plus-minus");
+plusMinus.onclick = () => {
   //    The display will show the display.innerText cubed;
-  display.innerText = Math.cbrt(display.innerText);
+  display.innerText = display.innerText * -1;
 };
 
 // POINT
 const point = document.querySelector("#point");
 point.onclick = () => {
   display.innerText += ".";
+};
+
+// Log 2
+let log2 = document.querySelector("#log-2");
+log2.onclick = () => {
+  if (display.innerText == 0) {
+    alert("O logarítimo de 0 não está definido!");
+  } else {
+    display.innerText = Math.log2(display.innerText);
+  }
 };
 
 // Log 10
@@ -202,7 +212,6 @@ log.onclick = () => {
     display.innerText = Math.log10(display.innerText);
   }
 };
-
 // Factorial
 // Fact button variable
 let factBtn = document.querySelector("#fact");
@@ -234,7 +243,12 @@ function showResult() {
   if (display.innerText == 0) {
     display.innerText = "0";
   } else {
-    if (display.innerText.includes("^")) {
+    if (display.innerText.includes(" * 10^")) {
+      let numBeforeTenX = display.innerText.split("* 10^")[0];
+      let numAfterTenX = display.innerText.split("* 10^")[1];
+
+      display.innerText = numBeforeTenX * Math.pow(10, numAfterTenX);
+    } else if (display.innerText.includes("^")) {
       powerCalc();
     } else {
       display.innerText = eval(display.innerText);
@@ -305,15 +319,6 @@ let darkModeToggle = document.querySelector("#dark-mode-toggle");
 // dark mode save on localStorage to save the user's preference
 let darkModeSave = localStorage.getItem("darkModeStatus");
 
-function swapIcons(id, url) {
-  let btn = document.querySelector(`#${id}`);
-  if (document.body.classList.contains("dark")) {
-    btn.innerHTML = `<img src="/img/sci-calc-operations/${url}--dark.png" class="latex-img">`;
-  } else {
-    btn.innerHTML = `<img src="/img/sci-calc-operations/${url}.png" class="latex-img">`;
-  }
-}
-
 function toggleDarkMode() {
   document.body.classList.toggle("dark");
 
@@ -335,18 +340,12 @@ if (darkModeSave === "enabled") {
 darkModeToggle.onclick = () => {
   darkModeSave = localStorage.getItem("darkModeStatus");
   toggleDarkMode();
-  swapIcons("cube-root", "cube-root");
-  swapIcons("x-power-y", "x-power-y");
-  swapIcons("ten-x", "ten-power-x");
 };
 
-window.onload = () => {
-  swapIcons("cube-root", "cube-root");
-  swapIcons("x-power-y", "x-power-y");
-  swapIcons("ten-x", "ten-power-x");
-};
+// Trigonometry
 
-let secondRow = document.querySelector("#secondRow");
+let invert = document.querySelector("#invert");
+let mod = document.querySelector("#mod");
 let sin = document.querySelector("#sin");
 let cos = document.querySelector("#cos");
 let tan = document.querySelector("#tan");
@@ -354,16 +353,58 @@ let arcsin = document.querySelector("#arcsin");
 let arccos = document.querySelector("#arccos");
 let arctan = document.querySelector("#arctan");
 
+function resultInDegrees(degrees) {
+  let result = degrees * (Math.PI / 180);
+  return result;
+}
+
+function resultInRadians(op, value) {
+  let result;
+
+  switch (op) {
+    case "sin":
+      result = Math.sin(value);
+      break;
+    case "cos":
+      result = Math.cos(value);
+      break;
+    case "tan":
+      result = Math.tan(value);
+      break;
+    case "asin":
+      result = Math.asin(value);
+      break;
+    case "acos":
+      result = Math.acos(value);
+      break;
+    case "atan":
+      result = Math.atan(value);
+      break;
+  }
+  return result;
+}
+
 function toggleTrigonometryButtons(btn) {
   btn.classList.toggle("hidden");
 }
 
-// Activates the second row and changes the buttons
-secondRow.onclick = () => {
-  secondRow.classList.toggle("active");
-  secondRow.classList.toggle("second-row-pressed")
+// Changing the button innerText from radians to degrees
+mod.onclick = () => {
+  mod.classList.toggle("deg");
 
-  if (secondRow.classList.contains("active")) {
+  if (mod.classList.contains("deg")) {
+    mod.textContent = "deg";
+  } else {
+    mod.textContent = "rad";
+  }
+};
+
+// Activates the second row and changes the buttons
+invert.onclick = () => {
+  invert.classList.toggle("active");
+  invert.classList.toggle("second-row-pressed");
+
+  if (invert.classList.contains("active")) {
     toggleTrigonometryButtons(sin);
     toggleTrigonometryButtons(cos);
     toggleTrigonometryButtons(tan);
@@ -380,57 +421,74 @@ secondRow.onclick = () => {
     toggleTrigonometryButtons(arccos);
     toggleTrigonometryButtons(arctan);
   }
-}
-
-// Trigonometry
+};
 
 // Sin
 sin.onclick = () => {
-  if (display.innerText == 0) {
-    display.innerText = Math.sin(display.innerText).toFixed();
+  if (mod.classList.contains("deg")) {
+    display.innerText = resultInDegrees(display.innerText);
   } else {
-    display.innerText = Math.sin(display.innerText).toFixed(11);
+    display.innerText = resultInRadians("sin", display.innerText);
   }
-}
+};
 
 // Cos
 cos.onclick = () => {
-  if(display.innerText == 0) {
-    display.innerText = Math.cos(display.innerText).toFixed();
+  if (mod.classList.contains("deg")) {
+    display.innerText = resultInDegrees(display.innerText);
   } else {
-    display.innerText = Math.cos(display.innerText).toFixed(11);
+    display.innerText = resultInRadians("cos", display.innerText);
   }
-}
+};
 
 // Tan
 tan.onclick = () => {
-  if(display.innerText == 0) {
-    display.innerText = Math.tan(display.innerText).toFixed();
+  if (mod.classList.contains("deg")) {
+    display.innerText = resultInDegrees(display.innerText);
   } else {
-    display.innerText = Math.tan(display.innerText).toFixed(11);
+    display.innerText = resultInRadians("tan", display.innerText);
   }
-}
+};
 
 // Arcsin
 arcsin.onclick = () => {
-  if(display.innerText == 0) {
-    display.innerText = Math.asin(display.innerText).toFixed();
+  if (mod.classList.contains("deg")) {
+    display.innerText = resultInDegrees(display.innerText);
   } else {
-    display.innerText = Math.asin(display.innerText).toFixed(11);
+    display.innerText = resultInRadians("asin", display.innerText);
   }
-}
+};
 
 // Arccos
 arccos.onclick = () => {
-  display.innerText = Math.acos(display.innerText).toFixed(11);
-}
+  if (mod.classList.contains("deg")) {
+    display.innerText = resultInDegrees(display.innerText);
+  } else {
+    display.innerText = resultInRadians("acos", display.innerText);
+  }
+};
 
 // Arctan
 arctan.onclick = () => {
-  if(display.innerText == 0) {
-    display.innerText = Math.atan(display.innerText).toFixed();
+  if (mod.classList.contains("deg")) {
+    display.innerText = resultInDegrees(display.innerText);
   } else {
-    display.innerText = Math.atan(display.innerText).toFixed(11);
+    display.innerText = resultInRadians("atan", display.innerText);
   }
-}
+};
 
+let ln = document.querySelector("#ln");
+
+ln.onclick = () => {
+  display.innerText = Math.log(display.innerText);
+};
+
+let pi = document.querySelector("#pi");
+
+pi.onclick = () => {
+  if (display.innerText == 0) {
+    display.innerText = Math.PI;
+  } else {
+    display.innerText += Math.PI;
+  }
+};

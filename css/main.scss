@@ -15,83 +15,71 @@ $dark-lighter: #3b4252;
 }
 
 body {
+  -webkit-tap-highlight-color: transparent;
   background: linear-gradient(222deg, hsl(0, 0%, 98%) 50%, hsl(0, 0%, 96%) 80%);
   background-attachment: fixed;
   color: $dark;
-  -webkit-tap-highlight-color: transparent;
+  display: grid;
+  grid-template-areas:
+    "header dark-mode"
+    "calc calc";
+  grid-template-columns: repeat(2, 1fr);
 }
 
 header {
-  padding: 0.7rem 1.2rem;
+  grid-area: header;
+  align-items: center;
+  align-self: start;
+  color: hsl(220, 16%, 22%);
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  justify-self: start;
+  padding: 0.7rem 1.2rem;
   user-select: none;
-  color: hsl(220, 16%, 22%);
-
-  .title-container {
-    display: flex;
-    align-items: center;
-    column-gap: 0.7rem;
-  }
 
   .accent {
     color: darken($primary, 15%);
   }
+  .title-container {
+    align-items: center;
+    column-gap: 0.7rem;
+    display: flex;
+  }
 
-  h2 {
+  .page-title {
     font-family: "IBM Plex Mono", monospace;
     font-weight: normal;
   }
-
-  .fa-moon,
-  .fa-sun {
-    cursor: pointer;
-  }
-
-  .fa-moon:hover,
-  .fa-sun:hover {
-    opacity: 0.8;
-  }
-}
-
-main {
-  max-width: 600px;
-  border-radius: 10px;
-  padding: 0.5rem;
-  margin: 0 auto 15px auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  row-gap: 1rem;
-  user-select: none;
 }
 
 //  Light mode and basic calculator
 .calc-container {
+  grid-column: span 2;
+  grid-area: calc;
   display: grid;
-  grid-template-columns: repeat(4, 75px);
-  place-content: center;
   gap: 0.5rem;
+  grid-template-columns: repeat(4, 75px);
+  margin: 0 auto 15px auto;
+  padding: 0.5rem;
 
   #display {
     background-color: inherit;
     font-size: 1.5rem;
     grid-column: span 4;
+    margin-bottom: 1rem;
     padding: 1.5rem;
     text-align: end;
-    margin-bottom: 1rem;
+    user-select: text;
   }
 
   button {
-    font-size: 1rem;
     background-color: inherit;
     border-radius: 10px;
     border: none;
-    padding: 0.8em 1rem;
-    cursor: pointer;
     color: $dark;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.8em 1rem;
   }
 
   button:hover {
@@ -111,30 +99,26 @@ main {
     background-color: lighten($primary, 27%);
   }
 
-  #equal {
-    grid-column: span 4;
-    color: $primary;
-    transition: 0.2s;
+  #mod {
+    color: $secondary;
+    font-weight: bold;
   }
 
-  #equal:hover {
+  #equal {
     background-color: $primary;
-    color: hsl(0, 0%, 98%);
-    box-shadow: $primary 0px 0px 5px;
     border: none;
+    color: hsl(0, 0%, 98%);
+    grid-column: span 4;
+    transition: 0.2s;
+    box-shadow: 0px 0px 3px $primary;
   }
 
   #C {
     grid-column: span 4;
-    color: $secondary;
     transition: 0.2s;
-    border: none;
-  }
-
-  #C:hover {
-    background-color: $secondary;
     color: hsl(0, 0%, 98%);
-    box-shadow: $secondary 0px 0px 5px;
+    box-shadow: 0px 0px 3px $secondary;
+    background-color: $secondary;
   }
 
   #equal:active,
@@ -160,41 +144,40 @@ main {
   .sci {
     display: inline;
   }
+
   #display {
     grid-column: span 5;
   }
+
   #C {
     grid-column: span 1;
   }
 
   #equal {
-    grid-column: span 2;
+    grid-column: span 1;
   }
+
   #sci-toggle {
     background-color: hsl(0, 0%, 90%);
   }
+
   #sci-toggle:hover {
     background-color: hsl(0, 0%, 80%);
   }
+
   #sci-toggle:active {
     background-color: hsl(0, 0%, 70%);
   }
+
   .hidden {
     display: none;
   }
+
   .second-row-pressed {
     background-color: $primary;
     color: #fafafa;
     font-weight: bold;
   }
-
-  #secondRow {
-    grid-column: span 2;
-  }
-}
-
-.latex-img {
-  width: 25px;
 }
 
 // Dark theme
@@ -211,8 +194,8 @@ body.dark {
   }
 
   button {
-    color: hsl(0, 0%, 98%);
     border: none;
+    color: hsl(0, 0%, 98%);
   }
 
   button:hover {
@@ -224,33 +207,59 @@ body.dark {
     color: $primary;
     font-weight: 600;
   }
+
+  #mod {
+    color: lighten($secondary, 10%);
+  }
+
   .op-basic,
   .fa-minimize,
-  .fa-expand,
-  #equal {
+  .fa-expand {
     color: lighten($primary, 10%);
   }
 
   #C {
-    color: lighten($secondary, 10%);
-    border: 2px solid lighten($secondary, 10%);
-  }
-
-  #C:hover {
     background-color: lighten($secondary, 10%);
-    color: hsl(0, 0%, 98%);
-    border: 2px solid inherit;
-  }
-
-  #equal {
-    border: 2px solid;
-  }
-
-  #equal:hover {
-    background-color: lighten($primary, 10%);
   }
 
   .calc-container.active #sci-toggle {
     background-color: lighten($dark, 20%);
+  }
+}
+
+// Dark mode button
+#dark-mode-toggle {
+  grid-area: dark-mode;
+  cursor: pointer;
+  justify-self: end;
+  padding: 1rem;
+}
+
+.fa-moon:hover,
+.fa-sun:hover {
+  opacity: 0.8;
+}
+
+#arcsin,
+#arccos,
+#arctan {
+  font-size: 0.7rem;
+}
+
+// Media query for desktop
+@media screen and (min-width: 1000px) {
+  body {
+    grid-template-areas: "header calc dark-mode";
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  #equal:hover,
+  #C:hover {
+    transform: scale(1.01);
+    opacity: 0.8;
+  }
+
+  .calc-container.active {
+    grid-template-columns: repeat(5, 75px);
   }
 }
