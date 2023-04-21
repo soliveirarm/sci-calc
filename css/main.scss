@@ -4,7 +4,7 @@
 // Variables
 $primary: #88c0d0;
 $secondary: hsl(358, 100%, 62%);
-$dark: #2e3440;
+$dark: #14171c;
 $dark-lighter: #3b4252;
 
 * {
@@ -30,7 +30,7 @@ header {
   grid-area: header;
   align-items: center;
   align-self: start;
-  color: hsl(220, 16%, 22%);
+  color: $dark;
   display: flex;
   justify-content: space-between;
   justify-self: start;

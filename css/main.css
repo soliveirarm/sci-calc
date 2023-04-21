@@ -11,7 +11,7 @@ body {
   -webkit-tap-highlight-color: transparent;
   background: linear-gradient(222deg, hsl(0, 0%, 98%) 50%, hsl(0, 0%, 96%) 80%);
   background-attachment: fixed;
-  color: #2e3440;
+  color: #14171c;
   display: grid;
   grid-template-areas: "header dark-mode" "calc calc";
   grid-template-columns: repeat(2, 1fr);
@@ -21,7 +21,7 @@ header {
   grid-area: header;
   align-items: center;
   align-self: start;
-  color: hsl(220, 16%, 22%);
+  color: #14171c;
   display: flex;
   justify-content: space-between;
   justify-self: start;
@@ -68,7 +68,7 @@ header .page-title {
   background-color: inherit;
   border-radius: 10px;
   border: none;
-  color: #2e3440;
+  color: #14171c;
   cursor: pointer;
   font-size: 1rem;
   padding: 0.8em 1rem;
@@ -152,7 +152,7 @@ header .page-title {
 }
 
 body.dark {
-  background: #2e3440;
+  background: #14171c;
   color: hsl(0, 0%, 98%);
 }
 body.dark header {
@@ -166,7 +166,7 @@ body.dark button {
   color: hsl(0, 0%, 98%);
 }
 body.dark button:hover {
-  background-color: #434c5e;
+  background-color: #292f3a;
 }
 body.dark .trig {
   background-color: inherit;
@@ -185,7 +185,7 @@ body.dark #C {
   background-color: #ff7075;
 }
 body.dark .calc-container.active #sci-toggle {
-  background-color: #59647b;
+  background-color: #3f4858;
 }
 
 #dark-mode-toggle {
