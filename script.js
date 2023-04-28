@@ -345,17 +345,10 @@ darkModeToggle.onclick = () => {
 // Trigonometry
 
 let invert = document.querySelector("#invert");
-let mod = document.querySelector("#mod");
-let sin = document.querySelector("#sin");
-let cos = document.querySelector("#cos");
-let tan = document.querySelector("#tan");
-let arcsin = document.querySelector("#arcsin");
-let arccos = document.querySelector("#arccos");
-let arctan = document.querySelector("#arctan");
+let trigButtons = document.querySelectorAll(".trig");
 
-function resultInDegrees(degrees) {
-  let result = degrees * (Math.PI / 180);
-  return result;
+function degreesToRadians(deg) {
+  return deg * (Math.PI / 180);
 }
 
 function resultInRadians(op, value) {
@@ -371,13 +364,13 @@ function resultInRadians(op, value) {
     case "tan":
       result = Math.tan(value);
       break;
-    case "asin":
+    case "arcsin":
       result = Math.asin(value);
       break;
-    case "acos":
+    case "arccos":
       result = Math.acos(value);
       break;
-    case "atan":
+    case "arctan":
       result = Math.atan(value);
       break;
   }
@@ -388,11 +381,19 @@ function toggleTrigonometryButtons(btn) {
   btn.classList.toggle("hidden");
 }
 
+function checkIfDegreeClassIsActive() {
+  if (mod.classList.contains("deg")) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 // Changing the button innerText from radians to degrees
 mod.onclick = () => {
   mod.classList.toggle("deg");
 
-  if (mod.classList.contains("deg")) {
+  if (checkIfDegreeClassIsActive()) {
     mod.textContent = "deg";
   } else {
     mod.textContent = "rad";
@@ -404,78 +405,83 @@ invert.onclick = () => {
   invert.classList.toggle("active");
   invert.classList.toggle("second-row-pressed");
 
-  if (invert.classList.contains("active")) {
-    toggleTrigonometryButtons(sin);
-    toggleTrigonometryButtons(cos);
-    toggleTrigonometryButtons(tan);
-
-    toggleTrigonometryButtons(arcsin);
-    toggleTrigonometryButtons(arccos);
-    toggleTrigonometryButtons(arctan);
-  } else {
-    toggleTrigonometryButtons(sin);
-    toggleTrigonometryButtons(cos);
-    toggleTrigonometryButtons(tan);
-
-    toggleTrigonometryButtons(arcsin);
-    toggleTrigonometryButtons(arccos);
-    toggleTrigonometryButtons(arctan);
-  }
+  trigButtons.forEach((btn) => {
+    if (invert.classList.contains("active")) {
+      toggleTrigonometryButtons(btn);
+    } else {
+      toggleTrigonometryButtons(btn);
+    }
+  });
 };
 
-// Sin
-sin.onclick = () => {
-  if (mod.classList.contains("deg")) {
-    display.innerText = resultInDegrees(display.innerText);
-  } else {
-    display.innerText = resultInRadians("sin", display.innerText);
-  }
-};
+trigButtons.forEach((btn) => {
+  btn.onclick = (e) => {
+    let buttonId = e.target.id;
 
-// Cos
-cos.onclick = () => {
-  if (mod.classList.contains("deg")) {
-    display.innerText = resultInDegrees(display.innerText);
-  } else {
-    display.innerText = resultInRadians("cos", display.innerText);
-  }
-};
-
-// Tan
-tan.onclick = () => {
-  if (mod.classList.contains("deg")) {
-    display.innerText = resultInDegrees(display.innerText);
-  } else {
-    display.innerText = resultInRadians("tan", display.innerText);
-  }
-};
-
-// Arcsin
-arcsin.onclick = () => {
-  if (mod.classList.contains("deg")) {
-    display.innerText = resultInDegrees(display.innerText);
-  } else {
-    display.innerText = resultInRadians("asin", display.innerText);
-  }
-};
-
-// Arccos
-arccos.onclick = () => {
-  if (mod.classList.contains("deg")) {
-    display.innerText = resultInDegrees(display.innerText);
-  } else {
-    display.innerText = resultInRadians("acos", display.innerText);
-  }
-};
-
-// Arctan
-arctan.onclick = () => {
-  if (mod.classList.contains("deg")) {
-    display.innerText = resultInDegrees(display.innerText);
-  } else {
-    display.innerText = resultInRadians("atan", display.innerText);
-  }
-};
+    // If the function checkIfDegreeIsActive returns true, the display result will be converted from degrees to radians by degreesToRadians(), and then resultInRadians() show the result
+    if (checkIfDegreeClassIsActive()) {
+      switch (buttonId) {
+        case "sin":
+          display.innerText = resultInRadians(
+            "sin",
+            degreesToRadians(display.innerText)
+          );
+          break;
+        case "cos":
+          display.innerText = resultInRadians(
+            "cos",
+            degreesToRadians(display.innerText)
+          );
+          break;
+        case "tan":
+          display.innerText = resultInRadians(
+            "tan",
+            degreesToRadians(display.innerText)
+          );
+          break;
+        case "arcsin":
+          display.innerText = resultInRadians(
+            "arcsin",
+            degreesToRadians(display.innerText)
+          );
+          break;
+        case "arccos":
+          display.innerText = resultInRadians(
+            "arccos",
+            degreesToRadians(display.innerText)
+          );
+          break;
+        case "arctan":
+          display.innerText = resultInRadians(
+            "arctan",
+            degreesToRadians(display.innerText)
+          );
+          break;
+      }
+    } else {
+      switch (buttonId) {
+        case "sin":
+          display.innerText = resultInRadians("sin", display.innerText);
+          break;
+        case "cos":
+          display.innerText = resultInRadians("cos", display.innerText);
+          break;
+        case "tan":
+          display.innerText = resultInRadians("tan", display.innerText);
+          break;
+        case "arcsin":
+          display.innerText = resultInRadians("arcsin", display.innerText);
+          break;
+        case "arccos":
+          display.innerText = resultInRadians("arccos", display.innerText);
+          break;
+        case "arctan":
+          display.innerText = resultInRadians("arctan", display.innerText);
+          break;
+      }
+    }
+  };
+});
 
 let ln = document.querySelector("#ln");
 
