@@ -246,10 +246,17 @@ body.dark {
 }
 
 // Media query for desktop
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 768px) {
   body {
     grid-template-areas: "header calc dark-mode";
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .calc-container {
+    button {
+      font-size: 1.4rem;
+      padding: 1.1rem 1.3rem;
+    }
   }
 
   #equal:hover,

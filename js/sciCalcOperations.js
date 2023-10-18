@@ -1,3 +1,13 @@
+function showModal(message) {
+  return Swal.fire({
+    icon: "error",
+    iconColor: "hsl(358, 100%, 62%)",
+    confirmButtonColor: "#88c0d0",
+    title: "Erro!",
+    text: message,
+  });
+}
+
 const ln = document.querySelector("#ln");
 
 ln.onclick = () => (display.innerText = Math.log(display.innerText));
@@ -58,7 +68,7 @@ plusMinus.onclick = () => (display.innerText = display.innerText * -1);
 const log2 = document.querySelector("#log-2");
 log2.onclick = () => {
   if (display.innerText == 0) {
-    alert("O logarítimo de 0 não está definido!");
+    showModal("O logarítimo de 0 não está definido!");
   } else {
     display.innerText = Math.log2(display.innerText);
   }
@@ -68,7 +78,7 @@ log2.onclick = () => {
 const log = document.querySelector("#log");
 log.onclick = () => {
   if (display.innerText == 0) {
-    alert("O logarítimo de 0 não está definido!");
+    showModal("O logarítimo de 0 não está definido!");
   } else {
     display.innerText = Math.log10(display.innerText);
   }
@@ -82,7 +92,7 @@ function factCalc() {
   if (display.innerText == 0) {
     display.innerText = 1;
   } else if (n < 0) {
-    alert("O número precisa ser positivo");
+    showModal("O número precisa ser positivo");
     display.innerText = "";
   }
   // The variable i receives the value on the display - 1, and the loop keeps multiplying until i = 2
