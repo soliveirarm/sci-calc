@@ -2,18 +2,15 @@ const darkModeToggle = document.querySelector("#dark-mode-toggle");
 
 let darkModeSave = localStorage.getItem("darkModeStatus");
 
-const sunIcon = '<i class="fa-solid fa-sun"></i>';
-const moonIcon = '<i class="fa-solid fa-moon"></i>';
-
 function toggleDarkMode() {
   document.body.classList.toggle("dark");
 
   if (document.body.classList.contains("dark")) {
-    darkModeToggle.innerHTML = sunIcon;
+    darkModeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
     localStorage.setItem("darkModeStatus", "enabled");
   } else {
     document.body.classList.remove("dark");
-    darkModeToggle.innerHTML = moonIcon;
+    darkModeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
     localStorage.removeItem("darkModeStatus");
   }
 }

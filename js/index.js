@@ -35,9 +35,7 @@ if (sciCalcIsActive === "enabled") {
   toggleSciCalc();
 }
 
-sciToggle.onclick = () => {
-  toggleSciCalc();
-};
+sciToggle.onclick = () => toggleSciCalc();
 
 // forEach THAT RUNS THROUGH ALL THE BUTTONS INSIDE THE .calc-container
 buttons.forEach((btn) => {
@@ -45,29 +43,23 @@ buttons.forEach((btn) => {
     let btnValue = e.target.innerText;
 
     // Checks is the display value already has a 0
-    if (display.innerText != 0 || display.innerText.includes(".")) {
-      display.innerText += btnValue;
-    } else {
-      display.innerText = btnValue;
-    }
+    display.innerText != 0 || display.innerText.includes(".")
+      ? (display.innerText += btnValue)
+      : (display.innerText = btnValue);
   });
 });
 
 function basicOp(op) {
-  if (display.innerText == 0) {
-    display.innerText = "0";
-  } else {
-    display.innerText += op;
-  }
+  display.innerText == 0
+    ? (display.innerText = "0")
+    : (display.innerText += op);
 }
 
 function symbols(symbol) {
   // Checks if the number on screen == 0 and if the symbol parameter != "."
-  if (display.innerText == 0 && symbol != ".") {
-    display.innerText = symbol;
-  } else {
-    display.innerText += symbol;
-  }
+  display.innerText == 0 && symbol != "."
+    ? (display.innerText = symbol)
+    : (display.innerText += symbol);
 }
 
 // BASIC OPERATION BUTTONS
@@ -77,23 +69,13 @@ const multBtn = document.querySelector("#multiply");
 const divideBtn = document.querySelector("#divide");
 
 // BASIC OP EVENTLISTENERS
-plusBtn.addEventListener("click", () => {
-  basicOp("+");
-});
-minusBtn.addEventListener("click", () => {
-  basicOp("-");
-});
-multBtn.addEventListener("click", () => {
-  basicOp("*");
-});
-divideBtn.addEventListener("click", () => {
-  basicOp("/");
-});
+plusBtn.addEventListener("click", () => basicOp("+"));
+minusBtn.addEventListener("click", () => basicOp("-"));
+multBtn.addEventListener("click", () => basicOp("*"));
+divideBtn.addEventListener("click", () => basicOp("/"));
 
 // C
-function c() {
-  display.innerText = 0;
-}
+const c = () => (display.innerText = 0);
 const cBtn = document.querySelector("#C");
 cBtn.addEventListener("click", c);
 
@@ -127,9 +109,7 @@ backspaceBtn.addEventListener("click", backspace);
 
 // POINT
 const point = document.querySelector("#point");
-point.onclick = () => {
-  display.innerText += ".";
-};
+point.onclick = () => (display.innerText += ".");
 
 function showResult() {
   if (display.innerText == 0) {

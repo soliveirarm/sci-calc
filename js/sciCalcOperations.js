@@ -1,8 +1,6 @@
 const ln = document.querySelector("#ln");
 
-ln.onclick = () => {
-  display.innerText = Math.log(display.innerText);
-};
+ln.onclick = () => (display.innerText = Math.log(display.innerText));
 
 const pi = document.querySelector("#pi");
 
@@ -16,9 +14,7 @@ pi.onclick = () => {
 
 // Square
 const square = document.querySelector("#square");
-square.onclick = () => {
-  display.innerText = Math.pow(display.innerText, 2);
-};
+square.onclick = () => (display.innerText = Math.pow(display.innerText, 2));
 
 // One divided by x
 const oneDivByX = document.querySelector("#one-divided-by-x");
@@ -34,15 +30,11 @@ absolute.onclick = () => {
 
 // Exp
 const exp = document.querySelector("#exp");
-exp.onclick = () => {
-  display.innerText = Math.exp(display.innerText);
-};
+exp.onclick = () => (display.innerText = Math.exp(display.innerText));
 
 // Square root
 const squareRoot = document.querySelector("#square-root");
-squareRoot.onclick = () => {
-  display.innerText = Math.sqrt(display.innerText);
-};
+squareRoot.onclick = () => (display.innerText = Math.sqrt(display.innerText));
 
 // FUNCTION TO CALCULATE X (BASE) RAISED TO THE POWER OF Y (EXP)
 function powerCalc() {
@@ -53,22 +45,14 @@ function powerCalc() {
 
 // x power y
 const power = document.querySelector("#x-power-y");
-power.onclick = () => {
-  display.innerText += "^";
-};
+power.onclick = () => (display.innerText += "^");
 
 //Ten to the power of x
 const tenX = document.querySelector("#ten-x");
-tenX.onclick = () => {
-  display.innerText += " * 10^";
-};
+tenX.onclick = () => (display.innerText += " * 10^");
 
-// cube root
 const plusMinus = document.querySelector("#plus-minus");
-plusMinus.onclick = () => {
-  //    The display will show the display.innerText cubed;
-  display.innerText = display.innerText * -1;
-};
+plusMinus.onclick = () => (display.innerText = display.innerText * -1);
 
 // Log 2
 const log2 = document.querySelector("#log-2");

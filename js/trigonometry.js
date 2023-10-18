@@ -1,9 +1,7 @@
 const invert = document.querySelector("#invert");
 const trigButtons = document.querySelectorAll(".trig");
 
-function degreesToRadians(deg) {
-  return deg * (Math.PI / 180);
-}
+const degreesToRadians = (deg) => deg * (Math.PI / 180);
 
 function resultInRadians(op, value) {
   let result;
@@ -31,9 +29,7 @@ function resultInRadians(op, value) {
   return result;
 }
 
-function toggleTrigonometryButtons(btn) {
-  btn.classList.toggle("hidden");
-}
+const toggleTrigonometryButtons = (btn) => btn.classList.toggle("hidden");
 
 function checkIfDegreeClassIsActive() {
   if (mod.classList.contains("deg")) {
@@ -47,11 +43,9 @@ function checkIfDegreeClassIsActive() {
 mod.onclick = () => {
   mod.classList.toggle("deg");
 
-  if (checkIfDegreeClassIsActive()) {
-    mod.textContent = "deg";
-  } else {
-    mod.textContent = "rad";
-  }
+  checkIfDegreeClassIsActive()
+    ? (mod.textContent = "deg")
+    : (mod.textContent = "rad");
 };
 
 // Activates the second row and changes the buttons
@@ -60,11 +54,9 @@ invert.onclick = () => {
   invert.classList.toggle("second-row-pressed");
 
   trigButtons.forEach((btn) => {
-    if (invert.classList.contains("active")) {
-      toggleTrigonometryButtons(btn);
-    } else {
-      toggleTrigonometryButtons(btn);
-    }
+    invert.classList.contains("active")
+      ? toggleTrigonometryButtons(btn)
+      : toggleTrigonometryButtons(btn);
   });
 };
 
