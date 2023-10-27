@@ -1,13 +1,3 @@
-function showModal(message) {
-  return Swal.fire({
-    icon: "error",
-    iconColor: "hsl(358, 100%, 62%)",
-    confirmButtonColor: "#88c0d0",
-    title: "Erro!",
-    text: message,
-  });
-}
-
 const ln = document.querySelector("#ln");
 
 ln.onclick = () => (display.innerText = Math.log(display.innerText));
@@ -15,11 +5,9 @@ ln.onclick = () => (display.innerText = Math.log(display.innerText));
 const pi = document.querySelector("#pi");
 
 pi.onclick = () => {
-  if (display.innerText == 0) {
-    display.innerText = Math.PI;
-  } else {
-    display.innerText += Math.PI;
-  }
+  display.innerText == 0
+    ? (display.innerText = Math.PI)
+    : (display.innerText += Math.PI);
 };
 
 // Square
@@ -67,21 +55,17 @@ plusMinus.onclick = () => (display.innerText = display.innerText * -1);
 // Log 2
 const log2 = document.querySelector("#log-2");
 log2.onclick = () => {
-  if (display.innerText == 0) {
-    showModal("O logarítimo de 0 não está definido!");
-  } else {
-    display.innerText = Math.log2(display.innerText);
-  }
+  display.innerText != 0
+    ? (display.innerText = Math.log2(display.innerText))
+    : alert("O logarítimo de 0 não está definido!");
 };
 
 // Log 10
 const log = document.querySelector("#log");
 log.onclick = () => {
-  if (display.innerText == 0) {
-    showModal("O logarítimo de 0 não está definido!");
-  } else {
-    display.innerText = Math.log10(display.innerText);
-  }
+  display.innerText != 0
+    ? (display.innerText = Math.log10(display.innerText))
+    : alert("O logarítimo de 0 não está definido!");
 };
 
 const factBtn = document.querySelector("#fact");
@@ -92,7 +76,7 @@ function factCalc() {
   if (display.innerText == 0) {
     display.innerText = 1;
   } else if (n < 0) {
-    showModal("O número precisa ser positivo");
+    alert("O número precisa ser positivo");
     display.innerText = "";
   }
   // The variable i receives the value on the display - 1, and the loop keeps multiplying until i = 2
