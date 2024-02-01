@@ -9,12 +9,13 @@
 
 body {
   -webkit-tap-highlight-color: transparent;
-  background: linear-gradient(222deg, hsl(0, 0%, 98%) 50%, hsl(0, 0%, 96%) 80%);
+  background: linear-gradient(222deg, #fafafa 50%, hsl(0, 0%, 96%) 80%);
   background-attachment: fixed;
   color: #14171c;
   display: grid;
   grid-template-areas: "header dark-mode" "calc calc";
   grid-template-columns: repeat(2, 1fr);
+  transition: 0.3s ease-in-out;
 }
 
 header {
@@ -87,13 +88,13 @@ header .page-title {
   background-color: #ebf4f7;
 }
 .calc-container #mod {
-  color: hsl(358, 100%, 62%);
+  color: #ff3d44;
   font-weight: bold;
 }
 .calc-container #equal {
   background-color: #88c0d0;
   border: none;
-  color: hsl(0, 0%, 98%);
+  color: #fafafa;
   grid-column: span 4;
   transition: 0.2s;
   box-shadow: 0px 0px 3px #88c0d0;
@@ -101,9 +102,9 @@ header .page-title {
 .calc-container #C {
   grid-column: span 4;
   transition: 0.2s;
-  color: hsl(0, 0%, 98%);
-  box-shadow: 0px 0px 3px hsl(358, 100%, 62%);
-  background-color: hsl(358, 100%, 62%);
+  color: #fafafa;
+  box-shadow: 0px 0px 3px #ff3d44;
+  background-color: #ff3d44;
 }
 .calc-container #equal:active,
 .calc-container #C:active {
@@ -153,17 +154,17 @@ header .page-title {
 
 body.dark {
   background: #14171c;
-  color: hsl(0, 0%, 98%);
+  color: #fafafa;
 }
 body.dark header {
-  color: hsl(0, 0%, 98%);
+  color: #fafafa;
 }
 body.dark header .accent {
   color: #bfdde6;
 }
 body.dark button {
   border: none;
-  color: hsl(0, 0%, 98%);
+  color: #fafafa;
 }
 body.dark button:hover {
   background-color: #292f3a;
@@ -222,4 +223,4 @@ body.dark .calc-container.active #sci-toggle {
   .calc-container.active {
     grid-template-columns: repeat(5, 75px);
   }
-}/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=index.css.map */

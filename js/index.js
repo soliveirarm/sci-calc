@@ -50,9 +50,15 @@ buttons.forEach((btn) => {
 });
 
 function basicOp(op) {
-  display.innerText == 0
-    ? (display.innerText = "0")
-    : (display.innerText += op);
+  let lastCharacter = display.textContent.slice(-1);
+
+  if (display.innerText == 0) {
+    display.innerText = "0";
+  } else {
+    if (lastCharacter != op) {
+      display.innerText += op;
+    }
+  }
 }
 
 function symbols(symbol) {
@@ -94,7 +100,7 @@ percentage.onclick = () => {
 
 // BACKSPACE BUTTON
 function backspace() {
-  if (display.innerText == 0) {
+  if (display.innerText == 0 || display.textContent.length == 1) {
     display.innerText = "0";
   } else {
     display.innerText = display.innerText.substring(
@@ -109,7 +115,7 @@ backspaceBtn.addEventListener("click", backspace);
 
 // POINT
 const point = document.querySelector("#point");
-point.onclick = () => (display.innerText += ".");
+point.addEventListener("click", () => (display.innerText += "."));
 
 function showResult() {
   if (display.innerText == 0) {
@@ -132,7 +138,7 @@ const equalBtn = document.querySelector("#equal");
 equalBtn.addEventListener("click", showResult);
 
 document.addEventListener("keydown", (e) => {
-  let pressedNum = parseFloat(e.key);
+  const pressedNum = parseFloat(e.key);
 
   //    If that ensures that only numbers will be shown
   if (!isNaN(pressedNum)) {
@@ -141,6 +147,10 @@ document.addEventListener("keydown", (e) => {
     } else {
       display.innerText = pressedNum;
     }
+  }
+
+  if (e.key === "s") {
+    toggleSciCalc();
   }
 
   //    Switch case for operations, backspace and equal button

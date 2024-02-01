@@ -3,8 +3,9 @@
 
 // Variables
 $primary: #88c0d0;
-$secondary: hsl(358, 100%, 62%);
+$secondary: #ff3d44;
 $dark: #14171c;
+$light: #fafafa;
 $dark-lighter: #3b4252;
 
 * {
@@ -16,7 +17,7 @@ $dark-lighter: #3b4252;
 
 body {
   -webkit-tap-highlight-color: transparent;
-  background: linear-gradient(222deg, hsl(0, 0%, 98%) 50%, hsl(0, 0%, 96%) 80%);
+  background: linear-gradient(222deg, $light 50%, hsl(0, 0%, 96%) 80%);
   background-attachment: fixed;
   color: $dark;
   display: grid;
@@ -24,6 +25,7 @@ body {
     "header dark-mode"
     "calc calc";
   grid-template-columns: repeat(2, 1fr);
+  transition: 0.3s ease-in-out;
 }
 
 header {
@@ -40,6 +42,7 @@ header {
   .accent {
     color: darken($primary, 15%);
   }
+
   .title-container {
     align-items: center;
     column-gap: 0.7rem;
@@ -107,7 +110,7 @@ header {
   #equal {
     background-color: $primary;
     border: none;
-    color: hsl(0, 0%, 98%);
+    color: $light;
     grid-column: span 4;
     transition: 0.2s;
     box-shadow: 0px 0px 3px $primary;
@@ -116,7 +119,7 @@ header {
   #C {
     grid-column: span 4;
     transition: 0.2s;
-    color: hsl(0, 0%, 98%);
+    color: $light;
     box-shadow: 0px 0px 3px $secondary;
     background-color: $secondary;
   }
@@ -183,10 +186,10 @@ header {
 // Dark theme
 body.dark {
   background: $dark;
-  color: hsl(0, 0%, 98%);
+  color: $light;
 
   header {
-    color: hsl(0, 0%, 98%);
+    color: #fafafa;
 
     .accent {
       color: lighten($primary, 15%);
@@ -195,7 +198,7 @@ body.dark {
 
   button {
     border: none;
-    color: hsl(0, 0%, 98%);
+    color: $light;
 
     &:hover {
       background-color: lighten($dark, 10%);
