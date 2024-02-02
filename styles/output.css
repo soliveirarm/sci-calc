@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -9,45 +7,40 @@
 
 body {
   -webkit-tap-highlight-color: transparent;
-  background: linear-gradient(222deg, #fafafa 50%, hsl(0, 0%, 96%) 80%);
+  background-image: linear-gradient(to right top, #fafafa, #f7f7f7, #f4f4f4, #f1f1f1, #eeeeee);
   background-attachment: fixed;
   color: #14171c;
-  display: grid;
-  grid-template-areas: "header dark-mode" "calc calc";
-  grid-template-columns: repeat(2, 1fr);
   transition: 0.3s ease-in-out;
 }
 
-header {
-  grid-area: header;
-  align-items: center;
-  align-self: start;
-  color: #14171c;
+.header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  justify-self: start;
   padding: 0.7rem 1.2rem;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  color: #14171c;
+  user-select: none;
 }
-header .accent {
-  color: #51a3ba;
-}
-header .title-container {
-  align-items: center;
-  -moz-column-gap: 0.7rem;
-       column-gap: 0.7rem;
+.header__logo {
   display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
-header .page-title {
+.header__title {
   font-family: "IBM Plex Mono", monospace;
   font-weight: normal;
 }
+.header .accent {
+  color: #51a3ba;
+}
 
-.calc-container {
-  grid-column: span 2;
-  grid-area: calc;
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator {
   display: grid;
   gap: 0.5rem;
   grid-template-columns: repeat(4, 75px);
@@ -55,44 +48,42 @@ header .page-title {
   padding: 0.5rem;
   height: 85vh;
 }
-.calc-container #display {
+.calculator #display {
   background-color: inherit;
   font-size: 1.5rem;
   grid-column: span 4;
   margin-bottom: 1rem;
   padding: 1.5rem;
   text-align: end;
-  -webkit-user-select: text;
-     -moz-user-select: text;
-          user-select: text;
+  user-select: text;
 }
-.calc-container button {
+.calculator button {
   background-color: inherit;
   border-radius: 10px;
   border: none;
   color: #14171c;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.1rem;
   padding: 0.8rem 1rem;
 }
-.calc-container button:hover {
+.calculator button:hover {
   background: hsl(0, 0%, 90%);
 }
-.calc-container button:active {
+.calculator button:active {
   background: hsl(0, 0%, 80%);
 }
-.calc-container #absolute,
-.calc-container #one-divided-by-x {
-  letter-spacing: 0.1em;
+.calculator #absolute,
+.calculator #one-divided-by-x {
+  letter-spacing: 0.1rem;
 }
-.calc-container .trig {
+.calculator .trig {
   background-color: #ebf4f7;
 }
-.calc-container #mod {
+.calculator #mod {
   color: #ff3d44;
   font-weight: bold;
 }
-.calc-container #equal {
+.calculator #equal {
   background-color: #88c0d0;
   border: none;
   color: #fafafa;
@@ -100,54 +91,54 @@ header .page-title {
   transition: 0.2s;
   box-shadow: 0px 0px 3px #88c0d0;
 }
-.calc-container #C {
+.calculator #C {
   grid-column: span 4;
   transition: 0.2s;
   color: #fafafa;
   box-shadow: 0px 0px 3px #ff3d44;
   background-color: #ff3d44;
 }
-.calc-container #equal:active,
-.calc-container #C:active {
+.calculator #equal:active,
+.calculator #C:active {
   opacity: 0.8;
 }
-.calc-container .op-basic,
-.calc-container .fa-minimize,
-.calc-container .fa-expand {
+.calculator .op-basic,
+.calculator .fa-minimize,
+.calculator .fa-expand {
   color: #63adc2;
 }
-.calc-container .sci {
+.calculator .sci {
   display: none;
 }
 
-.calc-container.active {
+.calculator.active {
   grid-template-columns: repeat(5, 60px);
 }
-.calc-container.active .sci {
+.calculator.active .sci {
   display: inline;
 }
-.calc-container.active #display {
+.calculator.active #display {
   grid-column: span 5;
 }
-.calc-container.active #C {
+.calculator.active #C {
   grid-column: span 1;
 }
-.calc-container.active #equal {
+.calculator.active #equal {
   grid-column: span 1;
 }
-.calc-container.active #sci-toggle {
+.calculator.active #sci-toggle {
   background-color: hsl(0, 0%, 90%);
 }
-.calc-container.active #sci-toggle:hover {
+.calculator.active #sci-toggle:hover {
   background-color: hsl(0, 0%, 80%);
 }
-.calc-container.active #sci-toggle:active {
+.calculator.active #sci-toggle:active {
   background-color: hsl(0, 0%, 70%);
 }
-.calc-container.active .hidden {
+.calculator.active .hidden {
   display: none;
 }
-.calc-container.active .second-row-pressed {
+.calculator.active .second-row-pressed {
   background-color: #88c0d0;
   color: #fafafa;
   font-weight: bold;
@@ -222,7 +213,7 @@ body.dark .fa-expand {
 body.dark #C {
   background-color: #ff575d;
 }
-body.dark .calc-container.active #sci-toggle {
+body.dark .calculator.active #sci-toggle {
   background-color: #3f4858;
 }
 body.dark .shortcuts-modal {
@@ -253,10 +244,10 @@ body.dark .shortcuts-modal ul span {
 }
 
 @media screen and (min-width: 640px) {
-  .calc-container {
+  .calculator {
     height: auto;
   }
-  .calc-container button {
+  .calculator button {
     font-size: 1.4rem;
     padding: 1.1rem 1.3rem;
   }
@@ -271,7 +262,9 @@ body.dark .shortcuts-modal ul span {
     transform: scale(1.01);
     opacity: 0.8;
   }
-  .calc-container.active {
+  .calculator.active {
     grid-template-columns: repeat(5, 75px);
   }
-}/*# sourceMappingURL=index.css.map */
+}
+
+/*# sourceMappingURL=output.css.map */

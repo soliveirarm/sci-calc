@@ -1,5 +1,5 @@
 const sciToggle = document.querySelector("#sci-toggle");
-const calcContainer = document.querySelector(".calc-container");
+const calcContainer = document.querySelector(".calculator");
 
 // Gets the sicCalc value on localStorage
 let sciCalcIsActive = localStorage.getItem("sciCalc");

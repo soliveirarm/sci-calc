@@ -33,7 +33,7 @@ document.addEventListener("keydown", (e) => {
 const display = document.querySelector("#display");
 const buttons = document.querySelectorAll(".btn");
 
-// forEach THAT RUNS THROUGH ALL THE BUTTONS INSIDE THE .calc-container
+// forEach THAT RUNS THROUGH ALL THE BUTTONS INSIDE THE .calculator
 buttons.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     let btnValue = e.target.innerText;
