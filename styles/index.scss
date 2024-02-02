@@ -64,6 +64,7 @@ header {
   grid-template-columns: repeat(4, 75px);
   margin: 0 auto 15px auto;
   padding: 0.5rem;
+  height: 85vh;
 
   #display {
     background-color: inherit;
@@ -82,7 +83,7 @@ header {
     color: $dark;
     cursor: pointer;
     font-size: 1rem;
-    padding: 0.8em 1rem;
+    padding: 0.8rem 1rem;
 
     &:hover {
       background: hsl(0, 0%, 90%);
@@ -183,6 +184,48 @@ header {
   }
 }
 
+#shortcuts {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
+
+.shortcuts-modal {
+  width: 95%;
+  max-width: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  border: none;
+  border-radius: 10px;
+  background-color: $light;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #modal-close {
+    cursor: pointer;
+  }
+
+  ul {
+    padding: 1rem;
+
+    li {
+      padding: 0.25rem;
+    }
+
+    span {
+      font-weight: bold;
+      color: darken($primary, 10%);
+    }
+  }
+}
+
 // Dark theme
 body.dark {
   background: $dark;
@@ -211,7 +254,7 @@ body.dark {
   }
 
   #mod {
-    color: lighten($secondary, 10%);
+    color: lighten($secondary, 5%);
   }
 
   .op-basic,
@@ -221,11 +264,21 @@ body.dark {
   }
 
   #C {
-    background-color: lighten($secondary, 10%);
+    background-color: lighten($secondary, 5%);
   }
 
   .calc-container.active #sci-toggle {
     background-color: lighten($dark, 20%);
+  }
+
+  .shortcuts-modal {
+    background-color: $dark;
+    color: $light;
+
+    ul span {
+      font-weight: bold;
+      color: $primary;
+    }
   }
 }
 
@@ -248,18 +301,21 @@ body.dark {
   font-size: 0.7rem;
 }
 
+@media screen and (min-width: 640px) {
+  .calc-container {
+    height: auto;
+    button {
+      font-size: 1.4rem;
+      padding: 1.1rem 1.3rem;
+    }
+  }
+}
+
 // Media query for desktop
 @media screen and (min-width: 768px) {
   body {
     grid-template-areas: "header calc dark-mode";
     grid-template-columns: repeat(3, 1fr);
-  }
-
-  .calc-container {
-    button {
-      font-size: 1.4rem;
-      padding: 1.1rem 1.3rem;
-    }
   }
 
   #equal:hover,

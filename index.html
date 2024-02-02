@@ -102,6 +102,24 @@
 
     <span id="dark-mode-toggle"><i class="fa-solid fa-moon"></i></span>
 
-    <script type="module" src="js/index.js"></script>
+    <span id="shortcuts"><i class="fa-solid fa-keyboard fa-lg"></i></span>
+
+    <dialog id="shortcuts-modal" class="shortcuts-modal">
+      <div>
+        <h2>Atalhos</h2>
+        <span id="modal-close"><i class="fa-solid fa-xmark fa-lg"></i></span>
+      </div>
+      <ul>
+        <li><span>s</span> - abre ou fecha a calculadora científica</li>
+        <li>
+          <span>Ctrl + Backspace</span> (Tecla de apagar) - Limpa a tela da
+          calculadora
+        </li>
+        <li><span>+, -, * ou /</span> - Realiza uma das 4 operações básicas</li>
+        <li><span>%</span> - O valor na tela seja dividido por 100</li>
+      </ul>
+    </dialog>
+
+    <script type="module" src="js/app.js"></script>
   </body>
 </html>

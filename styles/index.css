@@ -53,6 +53,7 @@ header .page-title {
   grid-template-columns: repeat(4, 75px);
   margin: 0 auto 15px auto;
   padding: 0.5rem;
+  height: 85vh;
 }
 .calc-container #display {
   background-color: inherit;
@@ -72,7 +73,7 @@ header .page-title {
   color: #14171c;
   cursor: pointer;
   font-size: 1rem;
-  padding: 0.8em 1rem;
+  padding: 0.8rem 1rem;
 }
 .calc-container button:hover {
   background: hsl(0, 0%, 90%);
@@ -152,6 +153,43 @@ header .page-title {
   font-weight: bold;
 }
 
+#shortcuts {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
+
+.shortcuts-modal {
+  width: 95%;
+  max-width: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #fafafa;
+}
+.shortcuts-modal div {
+  display: flex;
+  justify-content: space-between;
+}
+.shortcuts-modal #modal-close {
+  cursor: pointer;
+}
+.shortcuts-modal ul {
+  padding: 1rem;
+}
+.shortcuts-modal ul li {
+  padding: 0.25rem;
+}
+.shortcuts-modal ul span {
+  font-weight: bold;
+  color: #63adc2;
+}
+
 body.dark {
   background: #14171c;
   color: #fafafa;
@@ -174,7 +212,7 @@ body.dark .trig {
   color: #88c0d0;
 }
 body.dark #mod {
-  color: #ff7075;
+  color: #ff575d;
 }
 body.dark .op-basic,
 body.dark .fa-minimize,
@@ -182,10 +220,18 @@ body.dark .fa-expand {
   color: #add3de;
 }
 body.dark #C {
-  background-color: #ff7075;
+  background-color: #ff575d;
 }
 body.dark .calc-container.active #sci-toggle {
   background-color: #3f4858;
+}
+body.dark .shortcuts-modal {
+  background-color: #14171c;
+  color: #fafafa;
+}
+body.dark .shortcuts-modal ul span {
+  font-weight: bold;
+  color: #88c0d0;
 }
 
 #dark-mode-toggle {
@@ -206,14 +252,19 @@ body.dark .calc-container.active #sci-toggle {
   font-size: 0.7rem;
 }
 
-@media screen and (min-width: 768px) {
-  body {
-    grid-template-areas: "header calc dark-mode";
-    grid-template-columns: repeat(3, 1fr);
+@media screen and (min-width: 640px) {
+  .calc-container {
+    height: auto;
   }
   .calc-container button {
     font-size: 1.4rem;
     padding: 1.1rem 1.3rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  body {
+    grid-template-areas: "header calc dark-mode";
+    grid-template-columns: repeat(3, 1fr);
   }
   #equal:hover,
   #C:hover {
