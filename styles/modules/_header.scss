@@ -1,25 +1,25 @@
 @import "./vars";
 
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.7rem 1.2rem;
-  color: $dark;
-  user-select: none;
-
-  &__logo {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-  }
+    justify-content: space-between;
+    padding: 0.7rem 1.2rem;
+    color: $dark;
+    user-select: none;
 
-  &__title {
-    font-family: "IBM Plex Mono", monospace;
-    font-weight: normal;
-  }
+    &__logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
 
-  .accent {
-    color: darken($primary, 15%);
-  }
+    &__title {
+        font-family: "IBM Plex Mono", monospace;
+        font-weight: normal;
+    }
+
+    .accent {
+        color: darken($primary, 15%);
+    }
 }
