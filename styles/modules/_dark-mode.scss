@@ -1,75 +1,75 @@
 @import "./vars";
 
 body.dark {
-    background: $dark;
+  background: $dark;
+  color: $light;
+
+  header {
+    color: #fafafa;
+
+    .accent {
+      color: lighten($primary, 15%);
+    }
+  }
+
+  button {
+    border: none;
     color: $light;
 
-    header {
-        color: #fafafa;
-
-        .accent {
-            color: lighten($primary, 15%);
-        }
+    &:hover {
+      background-color: lighten($dark, 10%);
     }
+  }
 
-    button {
-        border: none;
-        color: $light;
+  .trig {
+    background-color: inherit;
+    color: $primary;
+  }
 
-        &:hover {
-            background-color: lighten($dark, 10%);
-        }
+  #mod {
+    color: lighten($secondary, 5%);
+  }
+
+  .op-basic,
+  .fa-minimize,
+  .fa-expand {
+    color: lighten($primary, 10%);
+  }
+
+  #C {
+    background-color: lighten($secondary, 5%);
+  }
+
+  .calculator.active #sci-toggle {
+    background-color: lighten($dark, 20%);
+  }
+
+  .shortcuts-modal {
+    background-color: $dark;
+    color: $light;
+
+    ul span {
+      font-weight: bold;
+      color: $primary;
     }
-
-    .trig {
-        background-color: inherit;
-        color: $primary;
-    }
-
-    #mod {
-        color: lighten($secondary, 5%);
-    }
-
-    .op-basic,
-    .fa-minimize,
-    .fa-expand {
-        color: lighten($primary, 10%);
-    }
-
-    #C {
-        background-color: lighten($secondary, 5%);
-    }
-
-    .calculator.active #sci-toggle {
-        background-color: lighten($dark, 20%);
-    }
-
-    .shortcuts-modal {
-        background-color: $dark;
-        color: $light;
-
-        ul span {
-            font-weight: bold;
-            color: $primary;
-        }
-    }
+  }
 }
 
 // Dark mode button
 #dark-mode-toggle {
-    grid-area: dark-mode;
-    cursor: pointer;
-    justify-self: end;
-    padding: 1rem;
+  grid-area: dark-mode;
+  cursor: pointer;
+  justify-self: end;
+  padding: 1rem;
 }
 
 .fa-moon:hover,
 .fa-sun:hover {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
 #arcsin,
 #arccos,
 #arctan {
-    font-size: 0.7rem;
+  font-size: 0.7rem;
 }

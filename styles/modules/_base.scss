@@ -1,23 +1,23 @@
 @import "./vars";
 
 * {
-    margin: 0;
-    padding: 0;
-    font-family: "Inter", sans-serif;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
 }
 
 body {
-    -webkit-tap-highlight-color: transparent;
-    background-image: linear-gradient(
-        to right top,
-        #fafafa,
-        #f7f7f7,
-        #f4f4f4,
-        #f1f1f1,
-        #eeeeee
-    );
-    background-attachment: fixed;
-    color: $dark;
-    transition: 0.3s ease-in-out;
+  -webkit-tap-highlight-color: transparent;
+  background-image: linear-gradient(
+    to right top,
+    #fafafa,
+    #f7f7f7,
+    #f4f4f4,
+    #f1f1f1,
+    #eeeeee
+  );
+  background-attachment: fixed;
+  color: $dark;
+  transition: 0.3s ease-in-out;
 }
